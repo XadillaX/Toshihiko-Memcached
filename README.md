@@ -5,7 +5,7 @@ The memcached support for Toshihiko as an addon.
 ## Installation
 
 ```sh
-$ npm install toshihiko-memcacehd
+$ npm install toshihiko-memcached
 ```
 
 ## How to Use
@@ -23,17 +23,17 @@ var toshihiko = new T.Toshihiko("database", "username", "", {
 });
 ```
 
-> `name` must be `memcached` and then Toshihiko will search for the package `toshihiko-memcacehd`.
+> `name` must be `memcached` and then Toshihiko will search for the package `toshihiko-memcached`.
 >
 > `servers` may be a string or an array stands for the server addresses.
 >
-> `options` is the options for memcacehd, you can refer to https://github.com/3rd-Eden/node-memcached#options.
+> `options` is the options for memcached, you can refer to https://github.com/3rd-Eden/node-memcached#options.
 
 Otherwise, you may create this object by yourself and pass the created object into cached:
 
 ```javascript
-var Memcacehd = require("toshihiko-memcacehd");
-var object = Memcacehd.create(SERVRES, OPTIONS);
+var Memcached = require("toshihiko-memcached");
+var object = Memcached.create(SERVRES, OPTIONS);
 var toshihiko = new T.Toshihiko(DATABASE, USERNAME, PASSWORD, {
     cache: object
 });
@@ -42,8 +42,8 @@ var toshihiko = new T.Toshihiko(DATABASE, USERNAME, PASSWORD, {
 or
 
 ```javascript
-var Memcacehd = require("toshihiko-memcacehd");
-var object = new Memcacehd(SERVRES, OPTIONS);
+var Memcached = require("toshihiko-memcached");
+var object = new Memcached(SERVRES, OPTIONS);
 var toshihiko = new T.Toshihiko(DATABASE, USERNAME, PASSWORD, {
     cache: object
 });
