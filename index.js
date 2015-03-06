@@ -6,6 +6,12 @@
  */
 var Memcached = module.exports = require("./lib/memcached");
 
+/**
+ * create toshihiko memcacehd
+ * @param {String|Array} servers the servers addresses
+ * @param {Object} options the memcached options
+ * @return {Memcached} the memcacehd wrapper
+ */
 module.exports.create = function(servers, options) {
     return new Memcached(servers, options);
 };
