@@ -1,6 +1,6 @@
 {
   "name": "toshihiko-memcached",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The memcached support for Toshihiko as an addon.",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "memcached"
   ],
   "author": "XadillaX",
-  "license": "GPLv2",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/XadillaX/Toshihiko-Memcached/issues"
   },
@@ -25,6 +25,7 @@
   "dependencies": {
     "algorithmjs": "^0.0.4",
     "async": "^0.9.0",
+    "lodash": "^3.10.1",
     "memcached": "git+https://github.com/XadillaX/node-memcached.git#3e98a05",
     "scarlet-task": "^0.1.0-comment"
   }

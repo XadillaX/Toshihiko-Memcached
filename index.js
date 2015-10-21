@@ -4,6 +4,8 @@
  * Copyright (c) 2015 Huaban.com, all rights
  * reserved
  */
+"use strict";
+
 var Memcached = module.exports = require("./lib/memcached");
 
 /**
@@ -15,4 +17,3 @@ var Memcached = module.exports = require("./lib/memcached");
 module.exports.create = function(servers, options) {
     return new Memcached(servers, options);
 };
-
