@@ -5,7 +5,7 @@ The memcached support for Toshihiko as an addon.
 ## Installation
 
 ```sh
-$ npm install toshihiko-memcached
+$ npm install toshihiko-memcached --save
 ```
 
 ## How to Use
@@ -99,4 +99,3 @@ function(db, table, keys) {
 You're welcome to make pull requests or issues!
 
 「雖然我覺得不怎麼可能有人會關注我」
-
