@@ -1,6 +1,6 @@
 {
   "name": "toshihiko-memcached",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "The memcached support for Toshihiko as an addon.",
   "main": "index.js",
   "scripts": {
