@@ -4,7 +4,7 @@
   "description": "The memcached support for Toshihiko as an addon.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/_mocha"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
     "lodash": "^3.10.1",
     "memcached": "^2.2.1",
     "scarlet-task": "^0.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^8.0.2"
   }
 }
