@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "0.10"
+  - "0.12"
+  - "4.2"
+  - "5"
+
+service:
+  - memcache
+
+after_script: make test-coveralls
+
+sudo: false
