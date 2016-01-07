@@ -12,7 +12,13 @@ var Scarlet = require("scarlet-task");
 var _package = require("../package");
 var cache = require("./preload");
 
+var run = require("sync-runner");
+
 describe("Test for " + _package.name, function() {
+    after(function() {
+        run("memcached -d");
+    });
+
     describe("# Get Key", function() {
         it("should get __tmtest__foo:bar:1", function(done) {
             cache._getKey("foo", "bar", 1).should.be.eql("__tmtest__foo:bar:1");
@@ -32,6 +38,26 @@ describe("Test for " + _package.name, function() {
                 aabd: 2,
                 aac: 3
             }).should.be.eql("__tmtest__foo:bar:aab2:aac3");
+            done();
+        });
+
+        it("should get __tmtest__foo:bar", function(done) {
+            cache._getKey("foo", "bar", {}).should.be.eql("__tmtest__foo:bar");
+            done();
+        });
+
+        it("should get __tmtest__foo:bar:1", function(done) {
+            cache._getKey("foo", "bar", {
+                _KFJkljsdlkajasdjas: 1
+            }).should.be.eql("__tmtest__foo:bar:1");
+            done();
+        });
+
+        it("should get __tmtest__foo:bar:aa3:aab2", function(done) {
+            cache._getKey("foo", "bar", {
+                aab: 2,
+                aa: 3
+            }).should.be.eql("__tmtest__foo:bar:aa3:aab2");
             done();
         });
     });
@@ -90,6 +116,59 @@ describe("Test for " + _package.name, function() {
             }, false);
         });
 
+        it("should process long keys", function(done) {
+            var key1 = "";
+            var key2 = "";
+            for(var i = 0; i < 200; i++) {
+                key1 += "1", key2 += "2";
+            }
+
+            cache.getData("foo", "bar", [
+                key1,
+                1,
+                key2,
+                2
+            ], function(err, res) {
+                should.ifError(err);
+                res.length.should.be.eql(2);
+
+                res.forEach(function(item, i) {
+                    JSON.parse(item).should.be.eql({
+                        foo: (i + 1).toString()
+                    });
+                });
+
+                done();
+            });
+        });
+
+        it("should get empty array", function(done) {
+            cache.getData("foo", "bar", [], function(err, res) {
+                should.ifError(err);
+                res.should.be.eql([]);
+
+                cache.getData("foo", "bar", [ 20 ], function(err, res) {
+                    should.ifError(err);
+                    res.should.be.eql([]);
+                    done();
+                });
+            });
+        });
+
+        it("should get empty array", function(done) {
+            cache.getData("foo", "bar", [], function(err, res) {
+                should.ifError(err);
+                res.should.be.eql([]);
+
+                cache.getData("foo", "bar", [ 20 ], function(err, res) {
+                    should.ifError(err);
+                    res.should.be.eql([]);
+                    done();
+                });
+            });
+        });
+
+
         it("should delete one key", function(done) {
             cache.deleteData("foo", "bar", 1, function(err, res) {
                 should.ifError(err);
@@ -109,6 +188,7 @@ describe("Test for " + _package.name, function() {
             });
         });
 
+
         it("should delete keys", function(done) {
             cache.deleteKeys("foo", "bar", [
                 -1, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10
@@ -124,7 +204,6 @@ describe("Test for " + _package.name, function() {
                 });
             });
         });
-
     });
 
     describe("# Customize", function() {
@@ -141,6 +220,20 @@ describe("Test for " + _package.name, function() {
             cache._getKey("foo", "bar", 1).should.be.eql(":foobar1");
 
             done();
+        });
+    });
+
+    describe("# Connection", function() {
+        this.timeout(100000);
+
+        it("should fail", function(done) {
+            cache.once("failure", function(detail) {
+                detail.server.should.be.eql("127.0.0.1:11211");
+                done();
+            });
+
+            run("./node_modules/.bin/fuck you memcached");
+            cache.getData("foo", "bar", [ 1 ], function() {});
         });
     });
 });

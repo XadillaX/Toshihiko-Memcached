@@ -9,5 +9,13 @@
 var Memcached = require("../");
 
 module.exports = Memcached.create('127.0.0.1:11211', {
-    prefix: '__tmtest__'
+    prefix: '__tmtest__',
+    customizeKey: Memcached.prototype._getKey,
+    
+    retry: 100,
+    retries: 1000,
+    failures: 0,
+    timeout: 100,
+    reconnect: 100,
+    remove: true
 });
