@@ -1,5 +1,4 @@
-# Toshihiko-Memcached
-
+# Toshihiko Memcached (Cache Layout)
 
 [![travis.ci](https://img.shields.io/travis/XadillaX/Toshihiko-Memcached.svg)](https://travis-ci.org/XadillaX/Toshihiko-Memcached)
 [![coveralls](https://img.shields.io/coveralls/XadillaX/Toshihiko-Memcached.svg)](https://coveralls.io/r/XadillaX/Toshihiko-Memcached)
