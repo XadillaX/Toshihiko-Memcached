@@ -74,7 +74,7 @@ You should pay attention to `db`, `table` and `keys` which stand for database na
 > Eg.
 >
 > ```json
-> { userId: 12, boardId: 12 }
+> { "userId": 12, "boardId": 12 }
 > ```
 
 So here's an example customize function:
