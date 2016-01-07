@@ -1,5 +1,14 @@
 # Toshihiko-Memcached
 
+
+[![travis.ci](https://img.shields.io/travis/XadillaX/Toshihiko-Memcached.svg)](https://travis-ci.org/XadillaX/Toshihiko-Memcached)
+[![coveralls](https://img.shields.io/coveralls/XadillaX/Toshihiko-Memcached.svg)](https://coveralls.io/r/XadillaX/Toshihiko-Memcached)
+[![License](https://img.shields.io/npm/l/toshihiko-memcached.svg?style=flat)](https://www.npmjs.org/package/toshihiko-memcached)
+[![Dependency Status](https://david-dm.org/XadillaX/Toshihiko-Memcached.svg)](https://david-dm.org/XadillaX/Toshihiko-Memcached)
+[![Toshihiko-Memcached](http://img.shields.io/npm/v/toshihiko-memcached.svg)](https://www.npmjs.org/package/toshihiko-memcached)
+[![Toshihiko-Memcached](http://img.shields.io/npm/dm/toshihiko-memcached.svg)](https://www.npmjs.org/package/toshihiko-memcached)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://github.com/XadillaX/Toshihiko-Memcached)
+
 The memcached support for Toshihiko as an addon.
 
 ## Installation
