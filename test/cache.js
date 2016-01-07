@@ -227,13 +227,21 @@ describe("Test for " + _package.name, function() {
         this.timeout(100000);
 
         it("should fail", function(done) {
-            cache.once("failure", function(detail) {
-                detail.server.should.be.eql("127.0.0.1:11211");
+            cache.once("failure", function() {
                 done();
             });
 
             run("./node_modules/.bin/fuck you memcached");
             cache.getData("foo", "bar", [ 1 ], function() {});
+            cache.memcached.emit("failure");
+        });
+
+        it("should reconnect", function(done) {
+            cache.once("reconnecting", function() {
+                done();
+            });
+
+            cache.memcached.emit("reconnecting");
         });
     });
 });
