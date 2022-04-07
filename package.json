@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/XadillaX/Toshihiko-Memcached",
   "dependencies": {
-    "async": "^2.0.1",
+    "async": "^3.2.2",
     "lodash": "^4.14.1",
     "memcached": "^2.2.2",
     "scarlet-task": "^1.0.0"
